@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — FisioFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/painel.css" />
+  <link rel="icon" href="../imagens/logo.svg" type="image/svg+xml" />
+</head>
+<body data-pagina="dashboard" data-titulo="Dashboard" data-subtitulo="Visão geral da clínica">
+  <div class="layout">
+    <aside class="sidebar" id="sidebar"></aside>
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+    <div class="main">
+      <header class="topbar">
+        <div style="display:flex;align-items:center;gap:14px">
+          <button class="hamburguer" id="hamburguer" aria-label="Menu"><span></span><span></span><span></span></button>
+          <div><h1 id="pageTitle"></h1><div class="subtitle" id="pageSubtitle"></div></div>
+        </div>
+        <div class="topbar-right" id="topbarRight"></div>
+      </header>
+
+      <main class="content">
+        <div class="metric-grid" id="metricGrid">
+          <!-- preenchido via JS -->
+        </div>
+
+        <div class="panel-grid">
+          <div class="card">
+            <div class="card-head">
+              <h2>Próximos agendamentos</h2>
+              <a href="agendamentos.html" class="btn btn-ghost btn-sm">Ver todos</a>
+            </div>
+            <div class="card-body" id="proximos">
+              <p style="color:var(--muted)">Carregando...</p>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><h2>Agendamentos por status</h2></div>
+            <div class="card-body" id="statusChart">
+              <p style="color:var(--muted)">Carregando...</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="toast-wrap" id="toastWrap"></div>
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/layout.js"></script>
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>

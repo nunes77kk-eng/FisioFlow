@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entrar — FisioFlow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/painel.css" />
+  <link rel="icon" href="../imagens/logo.svg" type="image/svg+xml" />
+</head>
+<body>
+  <div class="login-page">
+    <aside class="login-aside">
+      <div class="deco"></div>
+      <a href="../index.html" class="brand">
+        <img src="../imagens/logo.svg" alt="" class="mark" /> FisioFlow
+      </a>
+      <div>
+        <h2>Gestão simples para a sua clínica de fisioterapia.</h2>
+        <p>Pacientes, agenda, tratamentos e equipe — tudo em um só lugar, com a organização que o seu dia a dia pede.</p>
+      </div>
+      <span style="color:rgba(255,255,255,.6);font-size:.85rem">© 2026 FisioFlow</span>
+    </aside>
+
+    <main class="login-main">
+      <div class="login-form">
+        <h1>Bem-vindo de volta</h1>
+        <p>Entre com suas credenciais para acessar o painel.</p>
+
+        <form id="loginForm" novalidate>
+          <div class="field">
+            <label for="email">E-mail <span class="req">*</span></label>
+            <input type="email" id="email" class="input" placeholder="voce@fisioflow.com" autocomplete="username" />
+            <div class="field-error">Informe um e-mail válido.</div>
+          </div>
+          <div class="field">
+            <label for="senha">Senha <span class="req">*</span></label>
+            <input type="password" id="senha" class="input" placeholder="••••••••" autocomplete="current-password" />
+            <div class="field-error">Informe sua senha.</div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block" id="btnLogin">Entrar</button>
+        </form>
+
+        <div class="login-hint">
+          <b>Acesso de demonstração</b><br />
+          E-mail: <b>admin@fisioflow.com</b> · Senha: <b>senha123</b>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast-wrap" id="toastWrap"></div>
+
+  <script src="../js/config.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/ui.js"></script>
+  <script src="../js/login.js"></script>
+</body>
+</html>
