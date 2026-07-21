@@ -178,7 +178,7 @@ table.data td.acoes { text-align: right; white-space: nowrap; }
     width:100%;
     max-width:1000px;
     height:500px;
-    margin:auto;
+    margin:50px auto;
     position:relative;
     overflow:hidden;
     border-radius:20px;
@@ -188,14 +188,22 @@ table.data td.acoes { text-align: right; white-space: nowrap; }
 .carousel-container{
     width:100%;
     height:100%;
+    overflow:hidden;
 }
 
-.carousel img{
-    width:100%;
+.carousel-slide{
+    display:flex;
+    width:300%;
+    height:100%;
+    transition:transform .5s ease-in-out;
+}
+
+.carousel-slide img{
+    width:calc(100% / 3);
     height:100%;
     object-fit:cover;
+    flex-shrink:0;
     display:block;
-    transition:opacity .5s;
 }
 
 .prev,
@@ -207,10 +215,12 @@ table.data td.acoes { text-align: right; white-space: nowrap; }
     height:45px;
     border:none;
     border-radius:50%;
-    background:rgba(255,255,255,.8);
+    background:rgba(255,255,255,.85);
     cursor:pointer;
-    font-size:22px;
-    z-index:10;
+    font-size:24px;
+    font-weight:bold;
+    z-index:100;
+    transition:.3s;
 }
 
 .prev{

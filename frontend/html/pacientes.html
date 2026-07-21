@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fisioterapeutas — FisioFlow</title>
+  <title>Pacientes — FisioFlow</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/painel.css" />
-  <link rel="icon" href="../imagens/logo.svg" type="image/svg+xml" />
+  <link rel="icon" href="../img/logo.svg" type="image/svg+xml" />
 </head>
-<body data-pagina="fisioterapeutas" data-titulo="Fisioterapeutas" data-subtitulo="Equipe de profissionais">
+<body data-pagina="pacientes" data-titulo="Pacientes" data-subtitulo="Cadastro e gestão de pacientes">
   <div class="layout">
     <aside class="sidebar" id="sidebar"></aside>
     <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
@@ -28,12 +28,12 @@
         <div class="toolbar">
           <div class="search-box">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-            <input type="text" class="input" id="busca" placeholder="Buscar por nome, CREFITO ou especialidade..." />
+            <input type="text" class="input" id="busca" placeholder="Buscar por nome ou CPF..." />
           </div>
           <div class="toolbar-spacer"></div>
           <button class="btn btn-primary" id="btnNovo">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 5v14M5 12h14"/></svg>
-            Novo fisioterapeuta
+            Novo paciente
           </button>
         </div>
 
@@ -41,7 +41,9 @@
           <div class="table-scroll">
             <table class="data">
               <thead>
-                <tr><th>Nome</th><th>CREFITO</th><th>Especialidade</th><th>Telefone</th><th>E-mail</th><th style="text-align:right">Ações</th></tr>
+                <tr>
+                  <th>Nome</th><th>CPF</th><th>Nascimento</th><th>Telefone</th><th>E-mail</th><th style="text-align:right">Ações</th>
+                </tr>
               </thead>
               <tbody id="tbody"></tbody>
             </table>
@@ -52,10 +54,11 @@
     </div>
   </div>
 
+  <!-- Modal cadastro/edicao -->
   <div class="modal" id="modal">
     <div class="modal-box">
       <div class="modal-head">
-        <h3 id="modalTitulo">Novo fisioterapeuta</h3>
+        <h3 id="modalTitulo">Novo paciente</h3>
         <button class="modal-close" data-fechar><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
       </div>
       <form id="form">
@@ -68,27 +71,43 @@
           </div>
           <div class="form-row">
             <div class="field">
-              <label for="f-crefito">CREFITO <span class="req">*</span></label>
-              <input type="text" id="f-crefito" class="input" placeholder="CREFITO-4/00000-F" />
-              <div class="field-error">Informe o CREFITO.</div>
+              <label for="f-cpf">CPF <span class="req">*</span></label>
+              <input type="text" id="f-cpf" class="input" placeholder="000.000.000-00" maxlength="14" />
+              <div class="field-error">CPF inválido.</div>
             </div>
             <div class="field">
-              <label for="f-esp">Especialidade <span class="req">*</span></label>
-              <input type="text" id="f-esp" class="input" placeholder="Ex.: Ortopedia" />
-              <div class="field-error">Informe a especialidade.</div>
+              <label for="f-nasc">Data de nascimento <span class="req">*</span></label>
+              <input type="date" id="f-nasc" class="input" />
+              <div class="field-error">Informe a data.</div>
             </div>
           </div>
           <div class="form-row">
+            <div class="field">
+              <label for="f-sexo">Sexo</label>
+              <select id="f-sexo" class="select">
+                <option value="F">Feminino</option>
+                <option value="M">Masculino</option>
+                <option value="O">Outro</option>
+              </select>
+            </div>
             <div class="field">
               <label for="f-tel">Telefone <span class="req">*</span></label>
               <input type="tel" id="f-tel" class="input" placeholder="(31) 90000-0000" />
               <div class="field-error">Informe o telefone.</div>
             </div>
-            <div class="field">
-              <label for="f-email">E-mail <span class="req">*</span></label>
-              <input type="email" id="f-email" class="input" placeholder="profissional@fisioflow.com" />
-              <div class="field-error">E-mail inválido.</div>
-            </div>
+          </div>
+          <div class="field">
+            <label for="f-email">E-mail</label>
+            <input type="email" id="f-email" class="input" placeholder="paciente@email.com" />
+            <div class="field-error">E-mail inválido.</div>
+          </div>
+          <div class="field">
+            <label for="f-end">Endereço</label>
+            <input type="text" id="f-end" class="input" />
+          </div>
+          <div class="field">
+            <label for="f-obs">Observações clínicas</label>
+            <textarea id="f-obs" class="textarea"></textarea>
           </div>
         </div>
         <div class="modal-foot">
@@ -104,6 +123,6 @@
   <script src="../js/api.js"></script>
   <script src="../js/ui.js"></script>
   <script src="../js/layout.js"></script>
-  <script src="../js/fisioterapeutas.js"></script>
+  <script src="../js/pacientes.js"></script>
 </body>
 </html>

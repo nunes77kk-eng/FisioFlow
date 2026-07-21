@@ -5,6 +5,9 @@
  * paginas que exigem login e trata o logout. Cada pagina informa qual
  * item de menu esta ativo via <body data-pagina="...">.
  */
+console.log(document.querySelector(".carousel-slide"));
+console.log(document.querySelector(".next"));
+console.log(document.querySelector(".prev"));
 (function layout() {
   // ---- Guarda de autenticacao ----
   const usuario = Api.getUsuario();
@@ -96,57 +99,3 @@
   }
   if (backdrop) backdrop.addEventListener('click', fechar);
 })();
-// Lista de imagens
-const imagens = [
-    "imagens/imagem1.png",
-    "imagens/imagem2.png",
-    "imagens/imagem3.png"
-];
-
-let indice = 0;
-
-const imagem = document.getElementById("carousel-image");
-
-function mostrarImagem(){
-    imagem.src = imagens[indice];
-}
-
-mostrarImagem();
-
-document.querySelector(".next").addEventListener("click", ()=>{
-
-    indice++;
-
-    if(indice >= imagens.length){
-        indice = 0;
-    }
-
-    mostrarImagem();
-
-});
-
-document.querySelector(".prev").addEventListener("click", ()=>{
-
-    indice--;
-
-    if(indice < 0){
-        indice = imagens.length - 1;
-    }
-
-    mostrarImagem();
-
-});
-
-// Troca automática a cada 4 segundos
-
-setInterval(()=>{
-
-    indice++;
-
-    if(indice >= imagens.length){
-        indice = 0;
-    }
-
-    mostrarImagem();
-
-},4000);
