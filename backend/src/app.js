@@ -34,12 +34,15 @@ app.use('/api', rotasApi);
 
 // ----- Frontend estatico -----
 const pastaFrontend = path.join(__dirname, '..', '..', 'frontend');
+
 app.use(express.static(pastaFrontend));
 
 // Raiz -> pagina inicial
 app.get('/', (_req, res) => {
   res.sendFile(path.join(pastaFrontend, 'index.html'));
 });
+
+
 
 // ----- Tratamento de erros -----
 // 404 apenas para rotas de API (arquivos estaticos ja foram resolvidos acima)
