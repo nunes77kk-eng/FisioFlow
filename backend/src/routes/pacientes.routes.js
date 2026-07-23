@@ -15,7 +15,7 @@ router.use(autenticar);
 // Regras de validacao reutilizadas em criar/atualizar
 const regrasPaciente = [
   body('nome').trim().isLength({ min: 3 }).withMessage('O nome deve ter ao menos 3 caracteres.'),
-  body('cpf').custom((v) => cpfValido(v)).withMessage('CPF invalido.'),
+  // body('cpf').custom((v) => cpfValido(v)).withMessage('CPF invalido.'),
   body('data_nascimento').isISO8601().withMessage('Data de nascimento invalida (use AAAA-MM-DD).'),
   body('sexo').optional().isIn(['M', 'F', 'O']).withMessage('Sexo invalido.'),
   body('telefone').trim().notEmpty().withMessage('O telefone e obrigatorio.'),
